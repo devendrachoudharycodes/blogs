@@ -1,6 +1,9 @@
+```astro
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <header class="site-header">
@@ -8,7 +11,7 @@ import HeaderLink from './HeaderLink.astro';
 
 		<!-- Brand -->
 		<div class="brand">
-			<a href="/" class="brand-link">
+			<a href={base} class="brand-link">
 				<span class="brand-name">Devendra Choudhary</span>
 				<span class="brand-subtitle">Blogs</span>
 			</a>
@@ -16,11 +19,9 @@ import HeaderLink from './HeaderLink.astro';
 
 		<!-- Main Navigation -->
 		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blogs</HeaderLink>
-			<HeaderLink href="/projects">Projects</HeaderLink>
-			<HeaderLink href="/dev-lab">Dev Lab</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href={base}>Home</HeaderLink>
+			<HeaderLink href={`${base}blog`}>Blogs</HeaderLink>
+			<HeaderLink href={`${base}about`}>About</HeaderLink>
 		</div>
 
 		<!-- Social Links -->
@@ -97,7 +98,7 @@ import HeaderLink from './HeaderLink.astro';
 
 			<!-- RSS -->
 			<a
-				href="/rss.xml"
+				href={`${base}rss.xml`}
 				aria-label="RSS Feed"
 			>
 				<span class="sr-only">RSS Feed</span>
@@ -140,8 +141,6 @@ import HeaderLink from './HeaderLink.astro';
 		gap: 2rem;
 	}
 
-	/* Brand */
-
 	.brand {
 		flex-shrink: 0;
 	}
@@ -170,8 +169,6 @@ import HeaderLink from './HeaderLink.astro';
 		color: var(--accent);
 	}
 
-	/* Main Navigation */
-
 	.internal-links {
 		display: flex;
 		align-items: center;
@@ -198,8 +195,6 @@ import HeaderLink from './HeaderLink.astro';
 		color: var(--accent);
 		border-bottom-color: var(--accent);
 	}
-
-	/* Social Links */
 
 	.social-links {
 		display: flex;
@@ -237,8 +232,6 @@ import HeaderLink from './HeaderLink.astro';
 		height: 20px;
 	}
 
-	/* Accessibility */
-
 	.sr-only {
 		position: absolute;
 		width: 1px;
@@ -250,8 +243,6 @@ import HeaderLink from './HeaderLink.astro';
 		white-space: nowrap;
 		border: 0;
 	}
-
-	/* Tablet */
 
 	@media (max-width: 900px) {
 		.nav-container {
@@ -267,8 +258,6 @@ import HeaderLink from './HeaderLink.astro';
 			font-size: 1rem;
 		}
 	}
-
-	/* Mobile */
 
 	@media (max-width: 720px) {
 		.nav-container {
@@ -311,4 +300,29 @@ import HeaderLink from './HeaderLink.astro';
 		}
 	}
 </style>
+```
+
+Your `astro.config.mjs` stays:
+
+```js
+base: '/blogs/',
+```
+
+Then test locally:
+
+```bash
+npm run build
+npm run preview
+```
+
+The important resulting paths are:
+
+```text
+/blogs/
+/blogs/blog
+/blogs/about
+/blogs/rss.xml
+```
+
+No `projects` or `dev-lab` links are included because **those routes don't exist in your current `src/pages`**.
 
