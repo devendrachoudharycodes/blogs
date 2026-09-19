@@ -1,5 +1,7 @@
-
+---
 title: "What Is Spring? The Problem, the Container, and the Mental Model" description: "Part 1 of the Spring Core series. Why tightly coupled Java code and J2EE-era development led to Spring, what Inversion of Control and Dependency Injection actually change, how Spring Framework, Spring Boot and Spring MVC differ, and the mental model of the container you will master over the next 48 posts." pubDate: 2026-09-19 updatedDate: 2026-09-19 heroImage: "/images/blog/spring-core/01-what-is-spring.svg" heroImageAlt: "Configuration metadata (XML, @Configuration, @Component) flows into an IoC container, which produces wired OrderService, PaymentService and PaymentGateway beans." category: "Spring Core" tags: ["spring", "spring-framework", "spring-core", "ioc", "dependency-injection", "java", "beginner"] series: "Spring Core Architecture" seriesPart: 1 seriesTotal: 49 difficulty: "Beginner" readingTime: 30 codingTime: 15 totalTime: 45 springFrameworkVersion: "7.0.8" javaVersion: "17+" prerequisites: [] draft: false
+---
+
 Attribute
 Details
 Series
